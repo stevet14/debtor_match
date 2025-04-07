@@ -1,5 +1,14 @@
 -- Create the database
-CREATE DATABASE companies_db;
+DO
+$$
+BEGIN
+   IF NOT EXISTS (
+      SELECT FROM pg_database WHERE datname = 'companies_db'
+   ) THEN
+      CREATE DATABASE companies_db;
+   END IF;
+END
+$$;
 
 -- Connect to the database
 \c companies_db

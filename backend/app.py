@@ -6,12 +6,13 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import csv
 import requests
-from io import StringIO
 import zipfile
 from typing import List, Optional
 import os
 from pydantic import BaseModel
 import logging
+import codecs
+from datetime import datetime
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -35,6 +36,7 @@ DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASS = os.getenv("DB_PASS", "postgres")
 DB_PORT = os.getenv("DB_PORT", "5432")
 
+
 # Response models
 class Company(BaseModel):
     company_number: str
@@ -46,11 +48,13 @@ class Company(BaseModel):
     incorporation_date: Optional[str] = None
     sic_codes: Optional[str] = None
 
+
 class SearchResponse(BaseModel):
     companies: List[Company]
     total: int
     page: int
     per_page: int
+
 
 def get_db_connection():
     """Create a database connection"""
@@ -61,12 +65,15 @@ def get_db_connection():
             user=DB_USER,
             password=DB_PASS,
             port=DB_PORT,
-            cursor_factory=RealDictCursor
+            cursor_factory=RealDictCursor,
         )
         return conn
     except Exception as e:
         logger.error(f"Database connection error: {e}")
-        raise HTTPException(status_code=500, detail=f"Database connection error: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Database connection error: {str(e)}"
+        )
+
 
 def init_db():
     """Initialize database tables if they don't exist"""
@@ -74,7 +81,8 @@ def init_db():
     cur = conn.cursor()
     try:
         # Create companies table
-        cur.execute('''
+        cur.execute(
+            """
         CREATE TABLE IF NOT EXISTS companies (
             id SERIAL PRIMARY KEY,
             company_number VARCHAR(10) UNIQUE,
@@ -87,15 +95,19 @@ def init_db():
             sic_codes TEXT,
             search_vector TSVECTOR
         );
-        ''')
-        
+        """
+        )
+
         # Create GIN index for full-text search
-        cur.execute('''
+        cur.execute(
+            """
         CREATE INDEX IF NOT EXISTS idx_companies_search_vector ON companies USING GIN(search_vector);
-        ''')
-        
+        """
+        )
+
         # Create a trigger to update the search vector
-        cur.execute('''
+        cur.execute(
+            """
         CREATE OR REPLACE FUNCTION companies_search_vector_update() RETURNS TRIGGER AS $$
         BEGIN
             NEW.search_vector = to_tsvector('english', 
@@ -110,20 +122,25 @@ def init_db():
             RETURN NEW;
         END
         $$ LANGUAGE plpgsql;
-        ''')
-        
+        """
+        )
+
         # Drop the trigger if it exists
-        cur.execute('''
+        cur.execute(
+            """
         DROP TRIGGER IF EXISTS companies_search_vector_update_trigger ON companies;
-        ''')
-        
+        """
+        )
+
         # Create the trigger
-        cur.execute('''
+        cur.execute(
+            """
         CREATE TRIGGER companies_search_vector_update_trigger
         BEFORE INSERT OR UPDATE ON companies
         FOR EACH ROW EXECUTE FUNCTION companies_search_vector_update();
-        ''')
-        
+        """
+        )
+
         conn.commit()
         logger.info("Database initialized successfully")
     except Exception as e:
@@ -134,6 +151,7 @@ def init_db():
         cur.close()
         conn.close()
 
+
 @app.on_event("startup")
 async def startup_event():
     """Run on application startup"""
@@ -142,97 +160,113 @@ async def startup_event():
     except Exception as e:
         logger.error(f"Startup error: {e}")
 
+
 @app.get("/")
 async def root():
     """Root endpoint"""
     return {"message": "UK Companies House API"}
 
+
 @app.post("/download")
 async def download_companies_data():
-    """Download and import Companies House data"""
     try:
         # Companies House data URL
         url = "https://download.companieshouse.gov.uk/BasicCompanyDataAsOneFile-2024-04-01.zip"
-        
+
         logger.info(f"Downloading data from {url}")
         response = requests.get(url, stream=True)
-        
+
         if response.status_code != 200:
-            raise HTTPException(status_code=response.status_code, detail="Failed to download data")
-        
+            raise HTTPException(
+                status_code=response.status_code, detail="Failed to download data"
+            )
+
         # Create temporary file to store the zip
         with open("companies_data.zip", "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
-        
+
         logger.info("Download complete, extracting data")
-        
-        # Extract the csv from the zip
+
+        # Extract the CSV from the zip
         with zipfile.ZipFile("companies_data.zip", "r") as zip_ref:
             csv_filename = zip_ref.namelist()[0]  # Assuming there's only one file
             with zip_ref.open(csv_filename) as csv_file:
-                csv_content = csv_file.read().decode('utf-8')
-        
-        # Delete the zip file
-        os.remove("companies_data.zip")
-        
-        # Process the CSV data
-        reader = csv.DictReader(StringIO(csv_content))
+                # Preprocess the CSV to correct date formats and map required columns
+                required_columns = {
+                    " CompanyNumber": "company_number",
+                    "CompanyName": "company_name",
+                    "RegAddress.PostCode": "registered_office_address",
+                    "CompanyCategory": "company_category",
+                    "CompanyStatus": "company_status",
+                    "CountryOfOrigin": "country_of_origin",
+                    "IncorporationDate": "incorporation_date",
+                    "SICCode.SicText_1": "sic_codes",
+                }
+
+                with open(
+                    "temp_companies_corrected.csv", "w", encoding="utf-8"
+                ) as corrected_csv:
+                    writer = csv.DictWriter(
+                        corrected_csv, fieldnames=required_columns.values()
+                    )
+                    writer.writeheader()
+
+                    reader = csv.DictReader(codecs.iterdecode(csv_file, "utf-8"))
+                    for row in reader:
+                        # Map and transform the required columns
+                        mapped_row = {}
+                        for csv_col, db_col in required_columns.items():
+                            value = row.get(csv_col, None)
+                            if csv_col == "IncorporationDate" and value:
+                                try:
+                                    # Convert from DD/MM/YYYY to YYYY-MM-DD
+                                    value = datetime.strptime(
+                                        value, "%d/%m/%Y"
+                                    ).strftime("%Y-%m-%d")
+                                except ValueError:
+                                    logger.warning(
+                                        f"Invalid date format for IncorporationDate: {value}"
+                                    )
+                                    value = None  # Set to NULL if invalid
+                            mapped_row[db_col] = value
+                        writer.writerow(mapped_row)
+
+        logger.info("Temporary corrected CSV file created, loading into database")
+
+        # Use PostgreSQL's COPY command to load the corrected data
         conn = get_db_connection()
         cur = conn.cursor()
-        
+
         # Clear existing data
         cur.execute("TRUNCATE TABLE companies RESTART IDENTITY;")
-        
-        # Batch insert for better performance
-        batch_size = 1000
-        insert_count = 0
-        batch = []
-        
-        for row in reader:
-            # Map CSV columns to database columns
-            company_data = {
-                "company_number": row.get("CompanyNumber", ""),
-                "company_name": row.get("CompanyName", ""),
-                "registered_office_address": ", ".join(filter(None, [
-                    row.get("RegAddress.CareOf", ""),
-                    row.get("RegAddress.POBox", ""),
-                    row.get("RegAddress.AddressLine1", ""),
-                    row.get("RegAddress.AddressLine2", ""),
-                    row.get("RegAddress.PostTown", ""),
-                    row.get("RegAddress.County", ""),
-                    row.get("RegAddress.Country", ""),
-                    row.get("RegAddress.PostCode", "")
-                ])),
-                "company_category": row.get("CompanyCategory", ""),
-                "company_status": row.get("CompanyStatus", ""),
-                "country_of_origin": row.get("CountryOfOrigin", ""),
-                "incorporation_date": row.get("IncorporationDate", None),
-                "sic_codes": row.get("SICCode.SicText_1", "") or row.get("SICCodes", "")
-            }
-            
-            # Add to batch
-            batch.append(company_data)
-            
-            if len(batch) >= batch_size:
-                insert_batch(cur, batch)
-                insert_count += len(batch)
-                logger.info(f"Inserted {insert_count} companies")
-                batch = []
-        
-        # Insert any remaining records
-        if batch:
-            insert_batch(cur, batch)
-            insert_count += len(batch)
-        
+
+        # Load data using COPY
+        with open(
+            "temp_companies_corrected.csv", "r", encoding="utf-8"
+        ) as corrected_csv:
+            cur.copy_expert(
+                """
+                COPY companies (company_number, company_name, registered_office_address, 
+                company_category, company_status, country_of_origin, incorporation_date, sic_codes)
+                FROM STDIN WITH CSV HEADER
+                """,
+                corrected_csv,
+            )
+
         conn.commit()
-        logger.info(f"Import complete. Total companies inserted: {insert_count}")
-        
-        return {"status": "success", "companies_imported": insert_count}
-    
+        logger.info("Data successfully loaded into the database")
+
+        # Clean up temporary files
+        os.remove("companies_data.zip")
+        os.remove("temp_companies_corrected.csv")
+
+        return {"status": "success", "message": "Data imported successfully"}
+
     except Exception as e:
         logger.error(f"Error in download_companies_data: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 def insert_batch(cursor, batch):
     """Insert a batch of company records"""
@@ -254,27 +288,28 @@ def insert_batch(cursor, batch):
     """
     cursor.executemany(insert_query, batch)
 
+
 @app.get("/search", response_model=SearchResponse)
 async def search_companies(
     query: str = Query(..., min_length=1, description="Search query"),
     page: int = Query(1, ge=1, description="Page number"),
-    per_page: int = Query(20, ge=1, le=100, description="Results per page")
+    per_page: int = Query(20, ge=1, le=100, description="Results per page"),
 ):
     """Search companies by name, number, address or other fields"""
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        
+
         # Calculate offset
         offset = (page - 1) * per_page
-        
+
         # Get total count
         cur.execute(
             "SELECT COUNT(*) as total FROM companies WHERE search_vector @@ plainto_tsquery('english', %s)",
-            (query,)
+            (query,),
         )
         total = cur.fetchone()["total"]
-        
+
         # Get paginated results
         cur.execute(
             """
@@ -286,11 +321,11 @@ async def search_companies(
             ORDER BY ts_rank(search_vector, plainto_tsquery('english', %s)) DESC
             LIMIT %s OFFSET %s
             """,
-            (query, query, per_page, offset)
+            (query, query, per_page, offset),
         )
-        
+
         companies = cur.fetchall()
-        
+
         # Convert to list of Company objects
         company_list = []
         for row in companies:
@@ -301,21 +336,26 @@ async def search_companies(
                 company_category=row["company_category"],
                 company_status=row["company_status"],
                 country_of_origin=row["country_of_origin"],
-                incorporation_date=str(row["incorporation_date"]) if row["incorporation_date"] else None,
-                sic_codes=row["sic_codes"]
+                incorporation_date=(
+                    str(row["incorporation_date"])
+                    if row["incorporation_date"]
+                    else None
+                ),
+                sic_codes=row["sic_codes"],
             )
             company_list.append(company)
-        
+
         return {
             "companies": company_list,
             "total": total,
             "page": page,
-            "per_page": per_page
+            "per_page": per_page,
         }
-    
+
     except Exception as e:
         logger.error(f"Search error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/company/{company_number}", response_model=Company)
 async def get_company_details(company_number: str):
@@ -323,7 +363,7 @@ async def get_company_details(company_number: str):
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        
+
         cur.execute(
             """
             SELECT company_number, company_name, registered_office_address, 
@@ -332,14 +372,14 @@ async def get_company_details(company_number: str):
             FROM companies 
             WHERE company_number = %s
             """,
-            (company_number,)
+            (company_number,),
         )
-        
+
         company = cur.fetchone()
-        
+
         if not company:
             raise HTTPException(status_code=404, detail="Company not found")
-        
+
         return Company(
             company_number=company["company_number"],
             company_name=company["company_name"],
@@ -347,15 +387,20 @@ async def get_company_details(company_number: str):
             company_category=company["company_category"],
             company_status=company["company_status"],
             country_of_origin=company["country_of_origin"],
-            incorporation_date=str(company["incorporation_date"]) if company["incorporation_date"] else None,
-            sic_codes=company["sic_codes"]
+            incorporation_date=(
+                str(company["incorporation_date"])
+                if company["incorporation_date"]
+                else None
+            ),
+            sic_codes=company["sic_codes"],
         )
-    
+
     except HTTPException:
         raise
     except Exception as e:
         logger.error(f"Get company error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

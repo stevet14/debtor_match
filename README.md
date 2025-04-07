@@ -40,7 +40,7 @@ This application provides a mobile interface to search UK company data fetched f
 
 5. Start the backend services:
    ```
-   docker-compose up -d
+   docker compose up -d
    ```
 
 6. The API will be available at `http://localhost:8000`
