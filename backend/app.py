@@ -38,10 +38,20 @@ DB_PORT = os.getenv("DB_PORT", "5432")
 
 
 # Response models
+class Address(BaseModel):
+    care_of: Optional[str] = None
+    po_box: Optional[str] = None
+    address_line_1: Optional[str] = None
+    address_line_2: Optional[str] = None
+    town: Optional[str] = None
+    county: Optional[str] = None
+    country: Optional[str] = None
+    postcode: Optional[str] = None
+
 class Company(BaseModel):
     company_number: str
     company_name: str
-    registered_office_address: Optional[str] = None
+    registered_office_address: Optional[Address] = None
     company_category: Optional[str] = None
     company_status: Optional[str] = None
     country_of_origin: Optional[str] = None
@@ -80,14 +90,21 @@ def init_db():
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        # Create companies table
+        # Create companies table with address fields
         cur.execute(
             """
         CREATE TABLE IF NOT EXISTS companies (
             id SERIAL PRIMARY KEY,
             company_number VARCHAR(10) UNIQUE,
             company_name TEXT,
-            registered_office_address TEXT,
+            reg_address_care_of TEXT,
+            reg_address_po_box TEXT,
+            reg_address_line_1 TEXT,
+            reg_address_line_2 TEXT,
+            reg_address_town TEXT,
+            reg_address_county TEXT,
+            reg_address_country TEXT,
+            reg_address_postcode TEXT,
             company_category VARCHAR(100),
             company_status VARCHAR(50),
             country_of_origin VARCHAR(50),
@@ -113,7 +130,12 @@ def init_db():
             NEW.search_vector = to_tsvector('english', 
                 COALESCE(NEW.company_name, '') || ' ' || 
                 COALESCE(NEW.company_number, '') || ' ' || 
-                COALESCE(NEW.registered_office_address, '') || ' ' || 
+                COALESCE(NEW.reg_address_line_1, '') || ' ' ||
+                COALESCE(NEW.reg_address_line_2, '') || ' ' ||
+                COALESCE(NEW.reg_address_town, '') || ' ' ||
+                COALESCE(NEW.reg_address_county, '') || ' ' ||
+                COALESCE(NEW.reg_address_country, '') || ' ' ||
+                COALESCE(NEW.reg_address_postcode, '') || ' ' ||
                 COALESCE(NEW.company_category, '') || ' ' || 
                 COALESCE(NEW.company_status, '') || ' ' || 
                 COALESCE(NEW.country_of_origin, '') || ' ' || 
@@ -192,11 +214,18 @@ async def download_companies_data():
         with zipfile.ZipFile("companies_data.zip", "r") as zip_ref:
             csv_filename = zip_ref.namelist()[0]  # Assuming there's only one file
             with zip_ref.open(csv_filename) as csv_file:
-                # Preprocess the CSV to correct date formats and map required columns
+                # Map required columns including full address fields
                 required_columns = {
                     " CompanyNumber": "company_number",
                     "CompanyName": "company_name",
-                    "RegAddress.PostCode": "registered_office_address",
+                    "RegAddress.CareOf": "reg_address_care_of",
+                    "RegAddress.POBox": "reg_address_po_box",
+                    "RegAddress.AddressLine1": "reg_address_line_1",
+                    "RegAddress.AddressLine2": "reg_address_line_2",
+                    "RegAddress.PostTown": "reg_address_town",
+                    "RegAddress.County": "reg_address_county",
+                    "RegAddress.Country": "reg_address_country",
+                    "RegAddress.PostCode": "reg_address_postcode",
                     "CompanyCategory": "company_category",
                     "CompanyStatus": "company_status",
                     "CountryOfOrigin": "country_of_origin",
@@ -247,7 +276,9 @@ async def download_companies_data():
         ) as corrected_csv:
             cur.copy_expert(
                 """
-                COPY companies (company_number, company_name, registered_office_address, 
+                COPY companies (company_number, company_name, 
+                reg_address_care_of, reg_address_po_box, reg_address_line_1, reg_address_line_2,
+                reg_address_town, reg_address_county, reg_address_country, reg_address_postcode,
                 company_category, company_status, country_of_origin, incorporation_date, sic_codes)
                 FROM STDIN WITH CSV HEADER
                 """,
@@ -272,14 +303,25 @@ def insert_batch(cursor, batch):
     """Insert a batch of company records"""
     insert_query = """
     INSERT INTO companies 
-    (company_number, company_name, registered_office_address, company_category, 
-    company_status, country_of_origin, incorporation_date, sic_codes)
-    VALUES (%(company_number)s, %(company_name)s, %(registered_office_address)s, 
+    (company_number, company_name, 
+    reg_address_care_of, reg_address_po_box, reg_address_line_1, reg_address_line_2,
+    reg_address_town, reg_address_county, reg_address_country, reg_address_postcode,
+    company_category, company_status, country_of_origin, incorporation_date, sic_codes)
+    VALUES (%(company_number)s, %(company_name)s, 
+    %(reg_address_care_of)s, %(reg_address_po_box)s, %(reg_address_line_1)s, %(reg_address_line_2)s,
+    %(reg_address_town)s, %(reg_address_county)s, %(reg_address_country)s, %(reg_address_postcode)s,
     %(company_category)s, %(company_status)s, %(country_of_origin)s, 
     %(incorporation_date)s, %(sic_codes)s)
     ON CONFLICT (company_number) DO UPDATE SET
     company_name = EXCLUDED.company_name,
-    registered_office_address = EXCLUDED.registered_office_address,
+    reg_address_care_of = EXCLUDED.reg_address_care_of,
+    reg_address_po_box = EXCLUDED.reg_address_po_box,
+    reg_address_line_1 = EXCLUDED.reg_address_line_1,
+    reg_address_line_2 = EXCLUDED.reg_address_line_2,
+    reg_address_town = EXCLUDED.reg_address_town,
+    reg_address_county = EXCLUDED.reg_address_county,
+    reg_address_country = EXCLUDED.reg_address_country,
+    reg_address_postcode = EXCLUDED.reg_address_postcode,
     company_category = EXCLUDED.company_category,
     company_status = EXCLUDED.company_status,
     country_of_origin = EXCLUDED.country_of_origin,
@@ -313,7 +355,9 @@ async def search_companies(
         # Get paginated results
         cur.execute(
             """
-            SELECT company_number, company_name, registered_office_address, 
+            SELECT company_number, company_name, 
+                reg_address_care_of, reg_address_po_box, reg_address_line_1, reg_address_line_2,
+                reg_address_town, reg_address_county, reg_address_country, reg_address_postcode,
                 company_category, company_status, country_of_origin, 
                 incorporation_date, sic_codes
             FROM companies 
@@ -329,10 +373,22 @@ async def search_companies(
         # Convert to list of Company objects
         company_list = []
         for row in companies:
+            # Create address object
+            address = Address(
+                care_of=row["reg_address_care_of"],
+                po_box=row["reg_address_po_box"],
+                address_line_1=row["reg_address_line_1"],
+                address_line_2=row["reg_address_line_2"],
+                town=row["reg_address_town"],
+                county=row["reg_address_county"],
+                country=row["reg_address_country"],
+                postcode=row["reg_address_postcode"],
+            )
+            
             company = Company(
                 company_number=row["company_number"],
                 company_name=row["company_name"],
-                registered_office_address=row["registered_office_address"],
+                registered_office_address=address,
                 company_category=row["company_category"],
                 company_status=row["company_status"],
                 country_of_origin=row["country_of_origin"],
@@ -366,7 +422,9 @@ async def get_company_details(company_number: str):
 
         cur.execute(
             """
-            SELECT company_number, company_name, registered_office_address, 
+            SELECT company_number, company_name, 
+                reg_address_care_of, reg_address_po_box, reg_address_line_1, reg_address_line_2,
+                reg_address_town, reg_address_county, reg_address_country, reg_address_postcode,
                 company_category, company_status, country_of_origin, 
                 incorporation_date, sic_codes
             FROM companies 
@@ -380,10 +438,22 @@ async def get_company_details(company_number: str):
         if not company:
             raise HTTPException(status_code=404, detail="Company not found")
 
+        # Create address object
+        address = Address(
+            care_of=company["reg_address_care_of"],
+            po_box=company["reg_address_po_box"],
+            address_line_1=company["reg_address_line_1"],
+            address_line_2=company["reg_address_line_2"],
+            town=company["reg_address_town"],
+            county=company["reg_address_county"],
+            country=company["reg_address_country"],
+            postcode=company["reg_address_postcode"],
+        )
+        
         return Company(
             company_number=company["company_number"],
             company_name=company["company_name"],
-            registered_office_address=company["registered_office_address"],
+            registered_office_address=address,
             company_category=company["company_category"],
             company_status=company["company_status"],
             country_of_origin=company["country_of_origin"],

@@ -13,12 +13,19 @@ $$;
 -- Connect to the database
 \c companies_db
 
--- Create the companies table
-CREATE TABLE companies (
+-- Create the companies table with expanded address fields
+CREATE TABLE IF NOT EXISTS companies (
     id SERIAL PRIMARY KEY,
     company_number VARCHAR(10) UNIQUE,
     company_name TEXT,
-    registered_office_address TEXT,
+    reg_address_care_of TEXT,
+    reg_address_po_box TEXT,
+    reg_address_line_1 TEXT,
+    reg_address_line_2 TEXT,
+    reg_address_town TEXT,
+    reg_address_county TEXT,
+    reg_address_country TEXT,
+    reg_address_postcode TEXT,
     company_category VARCHAR(100),
     company_status VARCHAR(50),
     country_of_origin VARCHAR(50),
@@ -28,15 +35,22 @@ CREATE TABLE companies (
 );
 
 -- Create an index for the full-text search
-CREATE INDEX idx_companies_search_vector ON companies USING GIN(search_vector);
+CREATE INDEX IF NOT EXISTS idx_companies_search_vector ON companies USING GIN(search_vector);
 
--- Create a function to update the search vector
+-- Create a function to update the search vector, including all address fields
 CREATE OR REPLACE FUNCTION companies_search_vector_update() RETURNS TRIGGER AS $$
 BEGIN
     NEW.search_vector = to_tsvector('english', 
         COALESCE(NEW.company_name, '') || ' ' || 
         COALESCE(NEW.company_number, '') || ' ' || 
-        COALESCE(NEW.registered_office_address, '') || ' ' || 
+        COALESCE(NEW.reg_address_care_of, '') || ' ' ||
+        COALESCE(NEW.reg_address_po_box, '') || ' ' ||
+        COALESCE(NEW.reg_address_line_1, '') || ' ' ||
+        COALESCE(NEW.reg_address_line_2, '') || ' ' ||
+        COALESCE(NEW.reg_address_town, '') || ' ' ||
+        COALESCE(NEW.reg_address_county, '') || ' ' ||
+        COALESCE(NEW.reg_address_country, '') || ' ' ||
+        COALESCE(NEW.reg_address_postcode, '') || ' ' ||
         COALESCE(NEW.company_category, '') || ' ' || 
         COALESCE(NEW.company_status, '') || ' ' || 
         COALESCE(NEW.country_of_origin, '') || ' ' || 
@@ -46,10 +60,17 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
--- Create a trigger to update the search vector on insert or update
+-- Drop the trigger if it exists
+DROP TRIGGER IF EXISTS companies_search_vector_update_trigger ON companies;
+
+-- Create the trigger
 CREATE TRIGGER companies_search_vector_update_trigger
 BEFORE INSERT OR UPDATE ON companies
 FOR EACH ROW EXECUTE FUNCTION companies_search_vector_update();
 
 -- Create an index on company_number for faster lookups
-CREATE INDEX idx_company_number ON companies(company_number);
+CREATE INDEX IF NOT EXISTS idx_company_number ON companies(company_number);
+
+-- Create indexes on commonly searched address fields
+CREATE INDEX IF NOT EXISTS idx_reg_address_postcode ON companies(reg_address_postcode);
+CREATE INDEX IF NOT EXISTS idx_reg_address_town ON companies(reg_address_town);

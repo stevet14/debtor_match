@@ -12,6 +12,7 @@ import {
   RefreshControl,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -46,13 +47,13 @@ const HomeScreen = ({ navigation }) => {
       }
 
       const data = await response.json();
-      
+
       if (refresh || pageNum === 1) {
         setCompanies(data.companies);
       } else {
         setCompanies([...companies, ...data.companies]);
       }
-      
+
       setTotalResults(data.total);
       setPage(pageNum);
     } catch (error) {
@@ -70,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
         'Download Started',
         'Downloading and importing Companies House data. This may take several minutes.'
       );
-      
+
       const response = await fetch(`${API_URL}/download`, {
         method: 'POST',
       });
@@ -80,7 +81,7 @@ const HomeScreen = ({ navigation }) => {
       }
 
       const data = await response.json();
-      Alert.alert('Success', `Successfully imported ${data.companies_imported} companies`);
+      Alert.alert('Success', data.message);
     } catch (error) {
       Alert.alert('Error', error.message);
     } finally {
@@ -101,6 +102,11 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.companyName}>{item.company_name}</Text>
       <Text style={styles.companyNumber}>Company Number: {item.company_number}</Text>
       <Text style={styles.companyStatus}>Status: {item.company_status || 'N/A'}</Text>
+      {item.registered_office_address && item.registered_office_address.postcode && (
+        <Text style={styles.companyPostcode}>
+          Postcode: {item.registered_office_address.postcode}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 
@@ -178,6 +184,24 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
+// Format address helper function
+const formatAddress = (address) => {
+  if (!address) return 'N/A';
+
+  const addressParts = [];
+
+  if (address.care_of) addressParts.push(`c/o ${address.care_of}`);
+  if (address.po_box) addressParts.push(`PO Box ${address.po_box}`);
+  if (address.address_line_1) addressParts.push(address.address_line_1);
+  if (address.address_line_2) addressParts.push(address.address_line_2);
+  if (address.town) addressParts.push(address.town);
+  if (address.county) addressParts.push(address.county);
+  if (address.country) addressParts.push(address.country);
+  if (address.postcode) addressParts.push(address.postcode);
+
+  return addressParts.join('\n');
+};
+
 // Company Details Screen Component
 const CompanyDetailsScreen = ({ route }) => {
   const { companyNumber } = route.params;
@@ -190,7 +214,7 @@ const CompanyDetailsScreen = ({ route }) => {
       try {
         setIsLoading(true);
         const response = await fetch(`${API_URL}/company/${companyNumber}`);
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch company details');
         }
@@ -233,44 +257,111 @@ const CompanyDetailsScreen = ({ route }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.detailsContainer}>
-        <Text style={styles.detailsTitle}>{company.company_name}</Text>
-        
-        <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Company Number:</Text>
-          <Text style={styles.detailValue}>{company.company_number}</Text>
+      <ScrollView>
+        <View style={styles.detailsContainer}>
+          <Text style={styles.detailsTitle}>{company.company_name}</Text>
+
+          <View style={styles.detailItem}>
+            <Text style={styles.detailLabel}>Company Number:</Text>
+            <Text style={styles.detailValue}>{company.company_number}</Text>
+          </View>
+
+          <View style={styles.detailItem}>
+            <Text style={styles.detailLabel}>Status:</Text>
+            <Text style={styles.detailValue}>{company.company_status || 'N/A'}</Text>
+          </View>
+
+          <View style={styles.detailItem}>
+            <Text style={styles.detailLabel}>Category:</Text>
+            <Text style={styles.detailValue}>{company.company_category || 'N/A'}</Text>
+          </View>
+
+          <View style={styles.detailItem}>
+            <Text style={styles.detailLabel}>Country of Origin:</Text>
+            <Text style={styles.detailValue}>{company.country_of_origin || 'N/A'}</Text>
+          </View>
+
+          <View style={styles.detailItem}>
+            <Text style={styles.detailLabel}>Incorporation Date:</Text>
+            <Text style={styles.detailValue}>{company.incorporation_date || 'N/A'}</Text>
+          </View>
+
+          <View style={styles.detailItem}>
+            <Text style={styles.detailLabel}>SIC Codes:</Text>
+            <Text style={styles.detailValue}>{company.sic_codes || 'N/A'}</Text>
+          </View>
+
+          <View style={styles.addressContainer}>
+            <Text style={styles.detailLabel}>Registered Office Address:</Text>
+            <Text style={styles.addressValue}>
+              {formatAddress(company.registered_office_address)}
+            </Text>
+          </View>
+
+          {/* Display each address field separately for more control */}
+          {company.registered_office_address && (
+            <View style={styles.addressDetailContainer}>
+              <Text style={styles.addressDetailTitle}>Address Details:</Text>
+
+              {company.registered_office_address.care_of && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>Care Of:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.care_of}</Text>
+                </View>
+              )}
+
+              {company.registered_office_address.po_box && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>PO Box:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.po_box}</Text>
+                </View>
+              )}
+
+              {company.registered_office_address.address_line_1 && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>Address Line 1:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.address_line_1}</Text>
+                </View>
+              )}
+
+              {company.registered_office_address.address_line_2 && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>Address Line 2:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.address_line_2}</Text>
+                </View>
+              )}
+
+              {company.registered_office_address.town && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>Town:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.town}</Text>
+                </View>
+              )}
+
+              {company.registered_office_address.county && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>County:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.county}</Text>
+                </View>
+              )}
+
+              {company.registered_office_address.country && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>Country:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.country}</Text>
+                </View>
+              )}
+
+              {company.registered_office_address.postcode && (
+                <View style={styles.detailItem}>
+                  <Text style={styles.detailLabel}>Postcode:</Text>
+                  <Text style={styles.detailValue}>{company.registered_office_address.postcode}</Text>
+                </View>
+              )}
+            </View>
+          )}
         </View>
-        
-        <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Status:</Text>
-          <Text style={styles.detailValue}>{company.company_status || 'N/A'}</Text>
-        </View>
-        
-        <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Category:</Text>
-          <Text style={styles.detailValue}>{company.company_category || 'N/A'}</Text>
-        </View>
-        
-        <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Country of Origin:</Text>
-          <Text style={styles.detailValue}>{company.country_of_origin || 'N/A'}</Text>
-        </View>
-        
-        <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>Incorporation Date:</Text>
-          <Text style={styles.detailValue}>{company.incorporation_date || 'N/A'}</Text>
-        </View>
-        
-        <View style={styles.detailItem}>
-          <Text style={styles.detailLabel}>SIC Codes:</Text>
-          <Text style={styles.detailValue}>{company.sic_codes || 'N/A'}</Text>
-        </View>
-        
-        <View style={styles.addressContainer}>
-          <Text style={styles.detailLabel}>Registered Office Address:</Text>
-          <Text style={styles.addressValue}>{company.registered_office_address || 'N/A'}</Text>
-        </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -380,6 +471,11 @@ const styles = StyleSheet.create({
     color: '#666',
     marginTop: 4,
   },
+  companyPostcode: {
+    fontSize: 14,
+    color: '#666',
+    marginTop: 4,
+  },
   resultsCount: {
     padding: 16,
     fontStyle: 'italic',
@@ -420,7 +516,7 @@ const styles = StyleSheet.create({
   detailItem: {
     flexDirection: 'row',
     marginBottom: 8,
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   detailLabel: {
     fontWeight: 'bold',
@@ -432,11 +528,24 @@ const styles = StyleSheet.create({
     color: '#2c3e50',
   },
   addressContainer: {
-    marginTop: 8,
+    marginTop: 16,
+    marginBottom: 8,
   },
   addressValue: {
     marginTop: 4,
     color: '#2c3e50',
     lineHeight: 20,
+  },
+  addressDetailContainer: {
+    marginTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#e0e0e0',
+    paddingTop: 16,
+  },
+  addressDetailTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 12,
+    color: '#2c3e50',
   },
 });
