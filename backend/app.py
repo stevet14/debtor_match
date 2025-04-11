@@ -130,6 +130,8 @@ def init_db():
             NEW.search_vector = to_tsvector('english', 
                 COALESCE(NEW.company_name, '') || ' ' || 
                 COALESCE(NEW.company_number, '') || ' ' || 
+                COALESCE(NEW.reg_address_care_of, '') || ' ' ||
+                COALESCE(NEW.reg_address_po_box, '') || ' ' ||
                 COALESCE(NEW.reg_address_line_1, '') || ' ' ||
                 COALESCE(NEW.reg_address_line_2, '') || ' ' ||
                 COALESCE(NEW.reg_address_town, '') || ' ' ||

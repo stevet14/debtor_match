@@ -297,69 +297,6 @@ const CompanyDetailsScreen = ({ route }) => {
               {formatAddress(company.registered_office_address)}
             </Text>
           </View>
-
-          {/* Display each address field separately for more control */}
-          {company.registered_office_address && (
-            <View style={styles.addressDetailContainer}>
-              <Text style={styles.addressDetailTitle}>Address Details:</Text>
-
-              {company.registered_office_address.care_of && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>Care Of:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.care_of}</Text>
-                </View>
-              )}
-
-              {company.registered_office_address.po_box && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>PO Box:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.po_box}</Text>
-                </View>
-              )}
-
-              {company.registered_office_address.address_line_1 && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>Address Line 1:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.address_line_1}</Text>
-                </View>
-              )}
-
-              {company.registered_office_address.address_line_2 && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>Address Line 2:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.address_line_2}</Text>
-                </View>
-              )}
-
-              {company.registered_office_address.town && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>Town:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.town}</Text>
-                </View>
-              )}
-
-              {company.registered_office_address.county && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>County:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.county}</Text>
-                </View>
-              )}
-
-              {company.registered_office_address.country && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>Country:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.country}</Text>
-                </View>
-              )}
-
-              {company.registered_office_address.postcode && (
-                <View style={styles.detailItem}>
-                  <Text style={styles.detailLabel}>Postcode:</Text>
-                  <Text style={styles.detailValue}>{company.registered_office_address.postcode}</Text>
-                </View>
-              )}
-            </View>
-          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -535,17 +472,5 @@ const styles = StyleSheet.create({
     marginTop: 4,
     color: '#2c3e50',
     lineHeight: 20,
-  },
-  addressDetailContainer: {
-    marginTop: 16,
-    borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
-    paddingTop: 16,
-  },
-  addressDetailTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 12,
-    color: '#2c3e50',
   },
 });
