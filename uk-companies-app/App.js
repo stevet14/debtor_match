@@ -13,6 +13,9 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Modal,
+  ProgressBarAndroid,
+  ProgressViewIOS,
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -21,15 +24,186 @@ import { API_URL } from './config';
 // Stack navigator
 const Stack = createStackNavigator();
 
+// Download Status Component
+const DownloadStatusModal = ({ visible, status, onClose }) => {
+  const getStatusColor = () => {
+    switch (status?.status) {
+      case 'downloading':
+        return '#3498db';
+      case 'processing':
+        return '#f39c12';
+      case 'completed':
+        return '#2ecc71';
+      case 'failed':
+        return '#e74c3c';
+      default:
+        return '#95a5a6';
+    }
+  };
+
+  const formatTime = (timeString) => {
+    if (!timeString) return 'N/A';
+    try {
+      const date = new Date(timeString);
+      return date.toLocaleTimeString();
+    } catch (e) {
+      return timeString;
+    }
+  };
+
+  const getStatusMessage = () => {
+    if (!status) return "No status available";
+    
+    switch (status.status) {
+      case 'downloading':
+        return "Downloading data from Companies House...";
+      case 'processing':
+        return `Processing data... (${status.processed_records.toLocaleString()} of ${status.total_records.toLocaleString()} records)`;
+      case 'completed':
+        return "Download and import completed successfully!";
+      case 'failed':
+        return `Error: ${status.error || "Unknown error"}`;
+      default:
+        return "Preparing download...";
+    }
+  };
+
+  if (!visible) return null;
+
+  return (
+    <Modal
+      visible={visible}
+      transparent={true}
+      animationType="slide"
+      onRequestClose={onClose}
+    >
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+          <Text style={styles.modalTitle}>Download Status</Text>
+          
+          <View style={styles.statusContainer}>
+            <Text style={[styles.statusText, { color: getStatusColor() }]}>
+              {status?.status?.toUpperCase() || 'LOADING'}
+            </Text>
+            
+            <Text style={styles.statusMessage}>{getStatusMessage()}</Text>
+            
+            {status?.start_time && (
+              <Text style={styles.statusDetail}>Started at: {formatTime(status.start_time)}</Text>
+            )}
+            
+            <View style={styles.progressContainer}>
+              {Platform.OS === 'ios' ? (
+                <ProgressViewIOS 
+                  progress={status?.completion_percentage / 100 || 0}
+                  progressTintColor={getStatusColor()}
+                />
+              ) : (
+                <ProgressBarAndroid
+                  styleAttr="Horizontal"
+                  indeterminate={false}
+                  progress={status?.completion_percentage / 100 || 0}
+                  color={getStatusColor()}
+                />
+              )}
+              <Text style={styles.progressText}>
+                {Math.round(status?.completion_percentage || 0)}%
+              </Text>
+            </View>
+            
+            {status?.total_records > 0 && (
+              <Text style={styles.statusDetail}>
+                Records: {status.processed_records.toLocaleString()} / {status.total_records.toLocaleString()}
+              </Text>
+            )}
+          </View>
+          
+          <TouchableOpacity 
+            style={[
+              styles.modalButton, 
+              status?.status === 'completed' || status?.status === 'failed' 
+                ? styles.closeButton 
+                : styles.disabledButton
+            ]}
+            onPress={onClose}
+            disabled={status?.status !== 'completed' && status?.status !== 'failed'}
+          >
+            <Text style={styles.buttonText}>
+              {status?.status === 'completed' || status?.status === 'failed' ? 'Close' : 'Running...'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
+  );
+};
+
 // Home Screen Component
 const HomeScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadStatus, setDownloadStatus] = useState(null);
+  const [statusModalVisible, setStatusModalVisible] = useState(false);
   const [companies, setCompanies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
+  const [pollingInterval, setPollingInterval] = useState(null);
+
+  useEffect(() => {
+    // Clean up polling on unmount
+    return () => {
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
+      }
+    };
+  }, [pollingInterval]);
+
+  const startStatusPolling = () => {
+    // Clear any existing interval first
+    if (pollingInterval) {
+      clearInterval(pollingInterval);
+    }
+    
+    // Check status immediately
+    fetchDownloadStatus();
+    
+    // Then start polling
+    const interval = setInterval(() => {
+      fetchDownloadStatus();
+    }, 2000); // Poll every 2 seconds
+    
+    setPollingInterval(interval);
+  };
+
+  const stopStatusPolling = () => {
+    if (pollingInterval) {
+      clearInterval(pollingInterval);
+      setPollingInterval(null);
+    }
+  };
+
+  const fetchDownloadStatus = async () => {
+    try {
+      const response = await fetch(`${API_URL}/download/status`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch status');
+      }
+      
+      const status = await response.json();
+      setDownloadStatus(status);
+      
+      // If the download is no longer running, stop polling
+      if (!status.is_running && (status.status === 'completed' || status.status === 'failed')) {
+        stopStatusPolling();
+        setIsDownloading(false);
+      }
+    } catch (error) {
+      console.error('Error fetching status:', error);
+    }
+  };
 
   const searchCompanies = async (query, pageNum = 1, refresh = false) => {
     if (!query.trim()) {
@@ -67,26 +241,40 @@ const HomeScreen = ({ navigation }) => {
   const downloadCompaniesData = async () => {
     try {
       setIsDownloading(true);
-      Alert.alert(
-        'Download Started',
-        'Downloading and importing Companies House data. This may take several minutes.'
-      );
-
+      
       const response = await fetch(`${API_URL}/download`, {
         method: 'POST',
       });
 
       if (!response.ok) {
-        throw new Error('Download failed');
+        throw new Error('Download failed to start');
       }
 
       const data = await response.json();
-      Alert.alert('Success', data.message);
+      
+      // Start polling for status updates
+      startStatusPolling();
+      
+      // Show the status modal
+      setStatusModalVisible(true);
+      
     } catch (error) {
       Alert.alert('Error', error.message);
-    } finally {
       setIsDownloading(false);
     }
+  };
+
+  const closeStatusModal = () => {
+    setStatusModalVisible(false);
+    // Only stop polling if download is complete or failed
+    if (downloadStatus && (downloadStatus.status === 'completed' || downloadStatus.status === 'failed')) {
+      stopStatusPolling();
+    }
+  };
+
+  const showCurrentStatus = () => {
+    fetchDownloadStatus();
+    setStatusModalVisible(true);
   };
 
   const onRefresh = () => {
@@ -138,15 +326,26 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          style={[styles.downloadButton, isDownloading && styles.disabledButton]}
-          onPress={downloadCompaniesData}
-          disabled={isDownloading}
-        >
-          <Text style={styles.buttonText}>
-            {isDownloading ? 'Downloading...' : 'Download Company Data'}
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.downloadContainer}>
+          <TouchableOpacity
+            style={[styles.downloadButton, isDownloading && styles.disabledButton]}
+            onPress={downloadCompaniesData}
+            disabled={isDownloading}
+          >
+            <Text style={styles.buttonText}>
+              {isDownloading ? 'Downloading...' : 'Download Company Data'}
+            </Text>
+          </TouchableOpacity>
+          
+          {isDownloading && (
+            <TouchableOpacity
+              style={styles.statusButton}
+              onPress={showCurrentStatus}
+            >
+              <Text style={styles.buttonText}>Show Status</Text>
+            </TouchableOpacity>
+          )}
+        </View>
 
         {totalResults > 0 && (
           <Text style={styles.resultsCount}>
@@ -178,6 +377,12 @@ const HomeScreen = ({ navigation }) => {
               <ActivityIndicator size="large" color="#0000ff" />
             )
           }
+        />
+        
+        <DownloadStatusModal 
+          visible={statusModalVisible}
+          status={downloadStatus}
+          onClose={closeStatusModal}
         />
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -365,12 +570,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
   },
+  downloadContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
   downloadButton: {
     backgroundColor: '#3498db',
     padding: 12,
-    margin: 16,
     borderRadius: 5,
     alignItems: 'center',
+    flex: 1,
+    marginRight: isDownloading => isDownloading ? 8 : 0,
+  },
+  statusButton: {
+    backgroundColor: '#f39c12',
+    padding: 12,
+    borderRadius: 5,
+    alignItems: 'center',
+    flex: 0.5,
   },
   disabledButton: {
     backgroundColor: '#95a5a6',
@@ -472,5 +691,68 @@ const styles = StyleSheet.create({
     marginTop: 4,
     color: '#2c3e50',
     lineHeight: 20,
+  },
+  // Modal styles
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    width: '80%',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    textAlign: 'center',
+    color: '#2c3e50',
+  },
+  statusContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  statusText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  statusMessage: {
+    textAlign: 'center',
+    marginBottom: 10,
+    color: '#34495e',
+  },
+  statusDetail: {
+    fontSize: 12,
+    color: '#7f8c8d',
+    marginTop: 5,
+  },
+  progressContainer: {
+    width: '100%',
+    marginVertical: 15,
+    alignItems: 'center',
+  },
+  progressText: {
+    marginTop: 5,
+    fontSize: 14,
+    color: '#34495e',
+  },
+  modalButton: {
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  closeButton: {
+    backgroundColor: '#2ecc71',
   },
 });
