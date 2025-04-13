@@ -1,5 +1,5 @@
 # app.py - FastAPI Backend
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import psycopg2
@@ -7,12 +7,14 @@ from psycopg2.extras import RealDictCursor
 import csv
 import requests
 import zipfile
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 import os
 from pydantic import BaseModel
 import logging
 import codecs
 from datetime import datetime
+import threading
+import time
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -35,6 +37,17 @@ DB_NAME = os.getenv("DB_NAME", "companies_db")
 DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASS = os.getenv("DB_PASS", "postgres")
 DB_PORT = os.getenv("DB_PORT", "5432")
+
+# Global status tracker for download task
+download_status = {
+    "is_running": False,
+    "start_time": None,
+    "completion_percentage": 0,
+    "status": "idle",  # idle, downloading, processing, completed, failed
+    "error": None,
+    "total_records": 0,
+    "processed_records": 0
+}
 
 
 # Response models
@@ -64,6 +77,16 @@ class SearchResponse(BaseModel):
     total: int
     page: int
     per_page: int
+    
+    
+class DownloadStatus(BaseModel):
+    is_running: bool
+    start_time: Optional[str] = None
+    completion_percentage: float
+    status: str
+    error: Optional[str] = None
+    total_records: int
+    processed_records: int
 
 
 def get_db_connection():
@@ -191,9 +214,22 @@ async def root():
     return {"message": "UK Companies House API"}
 
 
-@app.post("/download")
-async def download_companies_data():
+def process_companies_data_in_background():
+    """Function to handle the download and import process in the background"""
+    global download_status
+    
     try:
+        # Mark as running and reset status
+        download_status = {
+            "is_running": True,
+            "start_time": datetime.now().isoformat(),
+            "completion_percentage": 0,
+            "status": "downloading",
+            "error": None,
+            "total_records": 0,
+            "processed_records": 0
+        }
+        
         # Companies House data URL
         url = "https://download.companieshouse.gov.uk/BasicCompanyDataAsOneFile-2024-04-01.zip"
 
@@ -201,20 +237,32 @@ async def download_companies_data():
         response = requests.get(url, stream=True)
 
         if response.status_code != 200:
-            raise HTTPException(
-                status_code=response.status_code, detail="Failed to download data"
-            )
+            raise Exception(f"Failed to download data, status code: {response.status_code}")
 
         # Create temporary file to store the zip
         with open("companies_data.zip", "wb") as f:
+            total_size = int(response.headers.get('content-length', 0))
+            downloaded = 0
+            
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
-
+                downloaded += len(chunk)
+                if total_size > 0:
+                    # Update download progress
+                    download_status["completion_percentage"] = min(50, int(downloaded * 50 / total_size))
+                    
         logger.info("Download complete, extracting data")
-
+        download_status["status"] = "processing"
+        
         # Extract the CSV from the zip
         with zipfile.ZipFile("companies_data.zip", "r") as zip_ref:
             csv_filename = zip_ref.namelist()[0]  # Assuming there's only one file
+            with zip_ref.open(csv_filename) as csv_file:
+                # Count total records for progress tracking
+                line_count = sum(1 for _ in codecs.iterdecode(csv_file, "utf-8"))
+                download_status["total_records"] = line_count - 1  # Subtract header row
+                
+            # Reopen the file for processing
             with zip_ref.open(csv_filename) as csv_file:
                 # Map required columns including full address fields
                 required_columns = {
@@ -244,6 +292,8 @@ async def download_companies_data():
                     writer.writeheader()
 
                     reader = csv.DictReader(codecs.iterdecode(csv_file, "utf-8"))
+                    records_processed = 0
+                    
                     for row in reader:
                         # Map and transform the required columns
                         mapped_row = {}
@@ -262,6 +312,12 @@ async def download_companies_data():
                                     value = None  # Set to NULL if invalid
                             mapped_row[db_col] = value
                         writer.writerow(mapped_row)
+                        
+                        # Update progress
+                        records_processed += 1
+                        if records_processed % 1000 == 0:  # Update every 1000 records
+                            download_status["processed_records"] = records_processed
+                            download_status["completion_percentage"] = 50 + int(records_processed * 50 / download_status["total_records"])
 
         logger.info("Temporary corrected CSV file created, loading into database")
 
@@ -294,11 +350,46 @@ async def download_companies_data():
         os.remove("companies_data.zip")
         os.remove("temp_companies_corrected.csv")
 
-        return {"status": "success", "message": "Data imported successfully"}
-
+        # Update final status
+        download_status["completion_percentage"] = 100
+        download_status["status"] = "completed"
+        download_status["processed_records"] = download_status["total_records"]
+        logger.info("Download and import process completed successfully")
+        
     except Exception as e:
-        logger.error(f"Error in download_companies_data: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Error in background process: {e}")
+        download_status["status"] = "failed"
+        download_status["error"] = str(e)
+    finally:
+        download_status["is_running"] = False
+
+
+@app.post("/download")
+async def download_companies_data(background_tasks: BackgroundTasks):
+    """Start the download process in the background"""
+    global download_status
+    
+    # If already running, return current status
+    if download_status["is_running"]:
+        return {
+            "status": "running",
+            "message": "Download already in progress",
+            "current_status": download_status
+        }
+    
+    # Start background task
+    background_tasks.add_task(process_companies_data_in_background)
+    
+    return {
+        "status": "started",
+        "message": "Download process started in the background"
+    }
+
+
+@app.get("/download/status", response_model=DownloadStatus)
+async def get_download_status():
+    """Get the current status of the download process"""
+    return download_status
 
 
 def insert_batch(cursor, batch):
