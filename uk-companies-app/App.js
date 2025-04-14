@@ -100,19 +100,11 @@ const DownloadStatusModal = ({ visible, status, onClose }) => {
             )}
 
             <View style={styles.progressContainer}>
-              {Platform.OS === 'ios' ? (
-                <ProgressViewIOS 
-                  progress={status?.completion_percentage / 100 || 0}
-                  progressTintColor={getStatusColor()}
-                />
-              ) : (
-                <ProgressBarAndroid
-                  styleAttr="Horizontal"
-                  indeterminate={false}
-                  progress={status?.completion_percentage / 100 || 0}
-                  color={getStatusColor()}
-                />
-              )}
+              {/* Cross-platform progress bar */}
+              <ProgressBar
+                progress={status?.completion_percentage / 100 || 0}
+                color={getStatusColor()}
+              />
               <Text style={styles.progressText}>
                 {Math.round(status?.completion_percentage || 0)}%
               </Text>
