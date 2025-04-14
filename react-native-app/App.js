@@ -14,8 +14,6 @@ import {
   Platform,
   ScrollView,
   Modal,
-  ProgressBarAndroid,
-  ProgressViewIOS,
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -23,6 +21,15 @@ import { API_URL } from './config';
 
 // Stack navigator
 const Stack = createStackNavigator();
+
+// Cross-platform progress bar component
+const ProgressBar = ({ progress, color }) => {
+  return (
+    <View style={styles.progressBarContainer}>
+      <View style={[styles.progressBarFill, { width: `${progress * 100}%`, backgroundColor: color }]} />
+    </View>
+  );
+};
 
 // Download Status Component
 const DownloadStatusModal = ({ visible, status, onClose }) => {
@@ -93,19 +100,11 @@ const DownloadStatusModal = ({ visible, status, onClose }) => {
             )}
             
             <View style={styles.progressContainer}>
-              {Platform.OS === 'ios' ? (
-                <ProgressViewIOS 
-                  progress={status?.completion_percentage / 100 || 0}
-                  progressTintColor={getStatusColor()}
-                />
-              ) : (
-                <ProgressBarAndroid
-                  styleAttr="Horizontal"
-                  indeterminate={false}
-                  progress={status?.completion_percentage / 100 || 0}
-                  color={getStatusColor()}
-                />
-              )}
+              {/* Cross-platform progress bar */}
+              <ProgressBar 
+                progress={status?.completion_percentage / 100 || 0}
+                color={getStatusColor()}
+              />
               <Text style={styles.progressText}>
                 {Math.round(status?.completion_percentage || 0)}%
               </Text>
@@ -259,7 +258,12 @@ const HomeScreen = ({ navigation }) => {
       setStatusModalVisible(true);
       
     } catch (error) {
-      Alert.alert('Error', error.message);
+      // Use alert for web compatibility
+      if (Platform.OS === 'web') {
+        window.alert(`Error: ${error.message}`);
+      } else {
+        Alert.alert('Error', error.message);
+      }
       setIsDownloading(false);
     }
   };
@@ -582,7 +586,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     flex: 1,
-    marginRight: isDownloading => isDownloading ? 8 : 0,
   },
   statusButton: {
     backgroundColor: '#f39c12',
@@ -590,6 +593,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     flex: 0.5,
+    marginLeft: 8,
   },
   disabledButton: {
     backgroundColor: '#95a5a6',
@@ -754,5 +758,17 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     backgroundColor: '#2ecc71',
+  },
+  // Custom cross-platform progress bar styles
+  progressBarContainer: {
+    height: 10,
+    width: '100%',
+    backgroundColor: '#e0e0e0',
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  progressBarFill: {
+    height: '100%',
+    borderRadius: 5,
   },
 });
