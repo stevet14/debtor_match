@@ -60,7 +60,7 @@ const DownloadStatusModal = ({ visible, status, onClose }) => {
 
   const getStatusMessage = () => {
     if (!status) return "No status available";
-    
+
     switch (status.status) {
       case 'downloading':
         return "Downloading data from Companies House...";
@@ -87,41 +87,49 @@ const DownloadStatusModal = ({ visible, status, onClose }) => {
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
           <Text style={styles.modalTitle}>Download Status</Text>
-          
+
           <View style={styles.statusContainer}>
             <Text style={[styles.statusText, { color: getStatusColor() }]}>
               {status?.status?.toUpperCase() || 'LOADING'}
             </Text>
-            
+
             <Text style={styles.statusMessage}>{getStatusMessage()}</Text>
-            
+
             {status?.start_time && (
               <Text style={styles.statusDetail}>Started at: {formatTime(status.start_time)}</Text>
             )}
-            
+
             <View style={styles.progressContainer}>
-              {/* Cross-platform progress bar */}
-              <ProgressBar 
-                progress={status?.completion_percentage / 100 || 0}
-                color={getStatusColor()}
-              />
+              {Platform.OS === 'ios' ? (
+                <ProgressViewIOS 
+                  progress={status?.completion_percentage / 100 || 0}
+                  progressTintColor={getStatusColor()}
+                />
+              ) : (
+                <ProgressBarAndroid
+                  styleAttr="Horizontal"
+                  indeterminate={false}
+                  progress={status?.completion_percentage / 100 || 0}
+                  color={getStatusColor()}
+                />
+              )}
               <Text style={styles.progressText}>
                 {Math.round(status?.completion_percentage || 0)}%
               </Text>
             </View>
-            
+
             {status?.total_records > 0 && (
               <Text style={styles.statusDetail}>
                 Records: {status.processed_records.toLocaleString()} / {status.total_records.toLocaleString()}
               </Text>
             )}
           </View>
-          
-          <TouchableOpacity 
+
+          <TouchableOpacity
             style={[
-              styles.modalButton, 
-              status?.status === 'completed' || status?.status === 'failed' 
-                ? styles.closeButton 
+              styles.modalButton,
+              status?.status === 'completed' || status?.status === 'failed'
+                ? styles.closeButton
                 : styles.disabledButton
             ]}
             onPress={onClose}
@@ -164,15 +172,15 @@ const HomeScreen = ({ navigation }) => {
     if (pollingInterval) {
       clearInterval(pollingInterval);
     }
-    
+
     // Check status immediately
     fetchDownloadStatus();
-    
+
     // Then start polling
     const interval = setInterval(() => {
       fetchDownloadStatus();
     }, 2000); // Poll every 2 seconds
-    
+
     setPollingInterval(interval);
   };
 
@@ -186,14 +194,14 @@ const HomeScreen = ({ navigation }) => {
   const fetchDownloadStatus = async () => {
     try {
       const response = await fetch(`${API_URL}/download/status`);
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch status');
       }
-      
+
       const status = await response.json();
       setDownloadStatus(status);
-      
+
       // If the download is no longer running, stop polling
       if (!status.is_running && (status.status === 'completed' || status.status === 'failed')) {
         stopStatusPolling();
@@ -240,7 +248,7 @@ const HomeScreen = ({ navigation }) => {
   const downloadCompaniesData = async () => {
     try {
       setIsDownloading(true);
-      
+
       const response = await fetch(`${API_URL}/download`, {
         method: 'POST',
       });
@@ -250,13 +258,13 @@ const HomeScreen = ({ navigation }) => {
       }
 
       const data = await response.json();
-      
+
       // Start polling for status updates
       startStatusPolling();
-      
+
       // Show the status modal
       setStatusModalVisible(true);
-      
+
     } catch (error) {
       // Use alert for web compatibility
       if (Platform.OS === 'web') {
@@ -340,7 +348,7 @@ const HomeScreen = ({ navigation }) => {
               {isDownloading ? 'Downloading...' : 'Download Company Data'}
             </Text>
           </TouchableOpacity>
-          
+
           {isDownloading && (
             <TouchableOpacity
               style={styles.statusButton}
@@ -382,8 +390,8 @@ const HomeScreen = ({ navigation }) => {
             )
           }
         />
-        
-        <DownloadStatusModal 
+
+        <DownloadStatusModal
           visible={statusModalVisible}
           status={downloadStatus}
           onClose={closeStatusModal}
