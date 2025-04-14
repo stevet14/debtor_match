@@ -1,0 +1,354 @@
+debtor_name,normalized_name,best_match_name,best_match_number,confidence,high_confidence_match,match_details
+ARTOOEE LTD,artooee,ARTOOEE LIMITED,07518644,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Moulton Football Club,moulton football club,,,0.0,False,
+Mills Kenneth,mills kenneth,,,0.0,False,
+Trevor Price,trevor price,,,0.0,False,
+Sherlock London Maintenance Ltd,sherlock london maintenance,SHERLOCK LONDON MAINTENANCE LIMITED,13057994,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Heronslea Hampstead Ltd,heronslea hampstead,HERONSLEA (HAMPSTEAD) LIMITED,13695598,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Mrs Megha Mittal,mrs megha mittal,,,0.0,False,
+Ben Fischman,ben fischman,,,0.0,False,
+Unimetals,unimetals,UNIMETAL LTD,08456053,0.97,True,"{'exact_match': 0.0, 'core_match': 0.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.94, 'partial_ratio': 1.0, 'token_sort_ratio': 0.94, 'token_set_ratio': 0.94, 'embedding_similarity': 0.0}"
+Abellio East Anglia Ltd,abellio east anglia,ABELLIO EAST ANGLIA LIMITED,07861414,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Commercial Property Maintenance Services Ltd,commercial property maintenance services,COMMERCIAL PROPERTY MAINTENANCE SERVICES LIMITED,SC165804,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Dove Groundworks Limited,dove groundworks,DOVE GROUNDWORK LTD,13144591,0.97,True,"{'exact_match': 0.0, 'core_match': 0.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.97, 'partial_ratio': 1.0, 'token_sort_ratio': 0.97, 'token_set_ratio': 0.97, 'embedding_similarity': 0.9636037929976958}"
+A D Bly Construction Limited,a d bly construction,A D BLY CONSTRUCTION LIMITED,04642985,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+New Horizons,new horizons,,,0.0,False,
+Lenoch Engineering Limited,lenoch engineering,LENOCH ENGINEERING LIMITED,04878090,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Tribe Ilderton Road OpCo Ltd,tribe ilderton road opco,TRIBE ILDERTON ROAD OPCO LIMITED,14982306,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Fresh Student Living - Tower 2,fresh student living - tower 2,,,0.0,False,
+GL Lewisham Development UK LTD,gl lewisham development united kingdom,GL LEWISHAM DEVELOPMENT UK LIMITED,12482331,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Helen Baldwin t/a DE & HR Baldwin,helen baldwin t a de hr baldwin,,,0.0,False,
+ERP Ltd,erp,,,0.0,False,
+Simon Roberts,simon roberts,,,0.0,False,
+Hargreaves Landsdown,hargreaves landsdown,,,0.0,False,
+C D AUCTION GROUP LTD,c d auction group,,,0.0,False,
+SMART BODYSHOP SOLUTIONS (HEREFORD) LTD,smart bodyshop solutions hereford,SMART BODYSHOP SOLUTIONS (HEREFORD) LTD,12659729,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+NANOLEAF EUROPE SAS,nanoleaf europe sas,,,0.0,False,
+TATA CONSUMER PRODUCTS LTD,tata consumer products,,,0.0,False,
+TEES VALLEY PLASTICS LTD,tees valley plastics,TEES VALLEY PLASTICS LIMITED,10505874,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+XPERTEX LTD (D+V ACOUNT),xpertex d v acount,,,0.0,False,
+ERIC  EDWARDS HAULAGE CONTRACTOR LTD,eric edwards haulage contractor,ERIC EDWARDS HAULAGE CONTRACTOR LIMITED,01594762,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Vitalograph Ltd,vitalograph,VITALOGRAPH LIMITED,00782675,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Bexbury Group Limited_Perm,bexbury group perm,,,0.0,False,
+Butterwick Alpaca Retreat,butterwick alpaca retreat,,,0.0,False,
+Davlyn Construction Limited,davlyn construction,DAVLYN CONSTRUCTION LIMITED,04653477,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Elm Park Homes,elm park homes,ELM PARK HOMES LTD,04963157,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Hamways,hamways,HAMWAYS LIMITED,06458029,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Knight Frank,knight frank,,,0.0,False,
+Lathams Architects,lathams architects,,,0.0,False,
+Madni Trust,madni,,,0.0,False,
+Renovus Real Estate Limited,renovus real estate,RENOVUS REAL ESTATE LTD,13662792,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Ergro Technical Services Ltd,ergro technical services,ERGRO TECHNICAL SERVICES LIMITED,03823788,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+James Harrower,james harrower,,,0.0,False,
+Jasmin Gaskill,jasmin gaskill,,,0.0,False,
+ANATREE GROUP LOGISTICS LTD,anatree group logistics,ANATREE GROUP LOGISTICS LTD.,12088034,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+DEFINITIVE SECURITY SOLUTIONS LTD,definitive security solutions,DEFINITIVE SECURITY SOLUTIONS LTD,07722145,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+MAY HARRIS MULTI SERVICES LTD,may harris multi services,MAY HARRIS MULTI SERVICES LTD,07111275,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Rixon Rixon and Murray Ltd,rixon rixon and murray,"RIXON, RIXON AND MURRAY LTD",10203084,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+BAUWATCH (UK) LIMITED,bauwatch united kingdom,BAUWATCH (UK) LIMITED,07830541,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+B E S SERVICES LIMITED,b e s services,,,0.0,False,
+ENES INSTALLATIONS LIMITED,enes installations,ENES INSTALLATIONS LIMITED,11220011,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+FABRIWALLS LTD,fabriwalls,FABRIWALLS LTD,14825311,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+INTERIORS DIRECT LIMITED,interiors direct,A1 INTERIORS DIRECT LIMITED,04524950,0.97,True,"{'exact_match': 0.0, 'core_match': 0.0, 'token_overlap': 0.6666666666666666, 'fuzzy_ratio': 0.91, 'partial_ratio': 1.0, 'token_sort_ratio': 0.91, 'token_set_ratio': 1.0, 'embedding_similarity': 0.7657626294775319}"
+SITEWATCH FIRE AND SURVEILLANCE LIMITED,sitewatch fire and surveillance,,,0.0,False,
+LVMH Group,lvmh,,,0.0,False,
+HARMONY SHIPPING SERVICES LIMITED,harmony shipping services,,,0.0,False,
+"SHANGHAI YESCARGO CO., LTD.",shanghai yescargo,,,0.0,False,
+BAGGEX,baggex,BAGGEX LTD,12558149,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+CONT001,cont001,,,0.0,False,
+CRS BUILDERS,crs builders,,,0.0,False,
+EXPEDITORS INTERNATIONAL (UK) LTD - BRS,expeditors international united kingdom - brs,,,0.0,False,
+Tyde Marketing,tyde marketing,TYDE MARKETING LIMITED,14857274,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+HARRISON AND WILDON LTD,harrison and wildon,HARRISON & WILDON LIMITED,01319758,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.88, 'partial_ratio': 0.73, 'token_sort_ratio': 0.88, 'token_set_ratio': 1.0, 'embedding_similarity': 0.5651166401711261}"
+WHITMAN BUILDING SERVICES LTD,whitman building services,WHITMAN BUILDING SERVICES LTD,08560643,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Solventis Ltd,solventis,SOLVENTIS LTD.,03366192,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Beaver Plants Ltd,beaver plants,BEAVER PLANTS LIMITED,01089635,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+R M Norman,r m norman,,,0.0,False,
+Cranleigh School,cranleigh school,CRANLEIGH SCHOOL,03595824,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+The Architectural Building Co,the architectural building,,,0.0,False,
+Davis Austin Roses,davis austin roses,,,0.0,False,
+A & J Waste Services Ltd,a j waste services,A AND J WASTE SERVICES LTD,10644192,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.9, 'partial_ratio': 0.94, 'token_sort_ratio': 0.9, 'token_set_ratio': 1.0, 'embedding_similarity': 0.9632369050987711}"
+Islington Council,islington council,,,0.0,False,
+David Austin Roses,david austin roses,DAVID AUSTIN ROSES LIMITED,02701780,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+The Landscaping Consultants,the landscaping consultants,,,0.0,False,
+Blanchard Wells,blanchard wells,BLANCHARD WELLS LIMITED,04123057,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Nottinghamshire Healthcare NHS Foundation,nottinghamshire healthcare nhs foundation,,,0.0,False,
+Queen Victoria Hospital,queen victoria hospital,,,0.0,False,
+Workflow Services Ltd (WFS),workflow services wfs,,,0.0,False,
+Fortius Limited,fortius,,,0.0,False,
+Osmosis Buyer Ltd,osmosis buyer,OSMOSIS BUYER LIMITED,13404693,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Adriatic Metals Services UK Ltd,adriatic metals services united kingdom,ADRIATIC METALS SERVICES (UK) LIMITED,03781581,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Thermal Ceramics UK Ltd,thermal ceramics united kingdom,THERMAL CERAMICS UK LIMITED,00890443,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Neptune Europe Ltd,neptune europe,NEPTUNE (EUROPE) LTD,03215405,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Incubeta Holdings International Limited,incubeta holdings international,INCUBETA HOLDINGS INTERNATIONAL LIMITED,12015398,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+IVC Acuisition Ltd,ivc acuisition,,,0.0,False,
+IVC Acquisition  Ltd,ivc acquisition,IVC ACQUISITION LTD,10505083,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Imagination Industries Investments Ltd,imagination industries investments,IMAGINATION INDUSTRIES INVESTMENTS LIMITED,11062169,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+International Exhibition Co-operative Wine Society Limited t,international exhibition -operative wine society t,INTERNATIONAL EXHIBITION CO-OPERATIVE WINE SOCIETY LIMITED,IP01824R,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 0.8333333333333334, 'fuzzy_ratio': 0.98, 'partial_ratio': 1.0, 'token_sort_ratio': 0.98, 'token_set_ratio': 1.0, 'embedding_similarity': 0.7337225232111647}"
+Transform Healthcare Limited,transform healthcare,TRANSFORM HEALTHCARE LIMITED,10616065,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Robert Jones & Agnes Hunt Orthopaedic Hospital NHS Foundatio,robert jones agnes hunt orthopaedic hospital nhs foundatio,,,0.0,False,
+The Westbourne Centre,the westbourne centre,,,0.0,False,
+MVMT Labs Inc - Perm Placement,mvmt laboratories - perm placement,,,0.0,False,
+Tranched Ltd - Perm Placement,tranched - perm placement,,,0.0,False,
+Pridwen Ltd - Perm Placement,pridwen - perm placement,,,0.0,False,
+QSTN LLC,qstn,,,0.0,False,
+SAFIA ALEXANDER INVESTMENTS LIMITED,safia alexander investments,SAFIA ALEXANDER INVESTMENTS LIMITED,11120934,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Mutley Construction / PBS Limited,mutley construction pbs,,,0.0,False,
+No Mild Steel Limited,no mild steel,NO MILD STEEL LIMITED,14706735,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+858 Leisure Ltd,858 leisure,858 LEISURE LTD,12160648,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Community Safety Team,community safety team,,,0.0,False,
+Moor Bio-Energy Ltd,moor bio-energy,MOOR BIO-ENERGY LIMITED,09781319,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Sheffield: Safe Square,sheffield safe square,,,0.0,False,
+Landypoint GmbH,landypoint,,,0.0,False,
+Westcott Construction Ltd,westcott construction,WESTCOTT CONSTRUCTION LIMITED,08788915,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Auluk Investments Ltd,auluk investments,AULUK INVESTMENTS LIMITED,13938824,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+CCW SERVICES LTD,ccw services,CCW SERVICES LIMITED,04877852,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+CHOICE UNIVERSE UK LTD,choice universe united kingdom,CHOICE UNIVERSE UK LTD,14743542,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+CHOICE UNIVERSE UK LTD - USD,choice universe united kingdom - usd,,,0.0,False,
+HOYER UK LTD,hoyer united kingdom,HOYER UK LIMITED,02699808,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+MARBRA LTD,marbra,MARBRA LTD,14695194,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+MERIDIAN FREIGHT SERVICES LTD,meridian freight services,MERIDIAN FREIGHT SERVICES LIMITED,01655828,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+SILK CONTAINER LINES UK LTD,silk container lines united kingdom,SILK CONTAINER LINES UK LTD,15144346,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+THE MASTERS GOLF COMPANY LTD,the masters golf,THE MASTERS GOLF COMPANY LIMITED,02548980,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+WEN-PARKER LOGISTICS (UK) LIMITED (WPL),wen-parker logistics united kingdom wpl,,,0.0,False,
+Rexel (York)*,rexel york,,,0.0,False,
+High Speed Two (HS2 Ltd),high speed two hs2,HIGH SPEED TWO (HS2) LIMITED,06791686,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+John Clarke Electrician Ltd*,john clarke electrician,JOHN CLARKE ELECTRICIAN LIMITED,SC277222,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Pro Electric,pro electric,PRO ELECTRICAL LIMITED,12899547,0.97,True,"{'exact_match': 0.0, 'core_match': 0.0, 'token_overlap': 0.5, 'fuzzy_ratio': 0.92, 'partial_ratio': 1.0, 'token_sort_ratio': 0.92, 'token_set_ratio': 0.92, 'embedding_similarity': 0.9561554884040603}"
+Lincolnshire Community Health Services NHS Trust,lincolnshire community health services nhs,,,0.0,False,
+Harry B Litherland & Co Ltd,harry b litherland,,,0.0,False,
+Krome Technologies Ltd,krome technologies,KROME TECHNOLOGIES LTD,07031219,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Technical Display,technical display,,,0.0,False,
+Trans-Tek Ltd,trans-tek,TRANS-TEK LIMITED,01915595,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Indigo splash Ltd,indigo splash,INDIGO SPLASH LTD,04359018,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+ZEEPY LTD,zeepy,ZEEPY LTD,15129888,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Studio Kloof Ltd,studio kloof,STUDIO KLOOF LTD,14067924,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Embark Group Ltd,embark group,EMBARK GROUP LIMITED,03578067,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Dupaul Engineering/Garage Services,dupaul engineering garage,,,0.0,False,
+Scotts of Reading,scotts of reading,,,0.0,False,
+Walt Motor Company,walt motor,,,0.0,False,
+Abbey Logistics Group Limited,abbey logistics group,ABBEY LOGISTICS GROUP LIMITED,02484251,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Bluegyp Limited,bluegyp,BLUEGYP LIMITED,05669255,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Delta Services (GB) Limited T/A Scaffolding Direct,delta services great britain t a scaffolding direct,,,0.0,False,
+Denton Associates (Manchester),denton associates manchester,,,0.0,False,
+DPC Mechanical Limited,dpc mechanical,DPC MECHANICAL LIMITED,11497160,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Element Materials Technology Hitchin Limited,element materials technology hitchin,ELEMENT MATERIALS TECHNOLOGY HITCHIN LIMITED,08149114,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Expect Distribution Ltd,expect distribution,EXPECT DISTRIBUTION LIMITED,02169364,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+First Packaging Services Ltd,first packaging services,FIRST PACKAGING SERVICES LIMITED,06660841,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+H Aistrop and Sons Limited,h aistrop and sons,H AISTROP & SONS LIMITED,05662641,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.88, 'partial_ratio': 0.79, 'token_sort_ratio': 0.88, 'token_set_ratio': 1.0, 'embedding_similarity': 0.8913462242333575}"
+JM Roofing Specialists Ltd,jm roofing specialists,JM ROOFING SPECIALISTS LTD,SC564118,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Lysander Associates Limited,lysander associates,LYSANDER ASSOCIATES LIMITED,04143306,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Mac Contracting (Nottingham)  LTD,mac contracting nottingham,MAC CONTRACTING NOTTINGHAM LIMITED,07140521,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Manpower UK Limited,manpower united kingdom,,,0.0,False,
+SGD Contractors Limited,sgd contractors,SGD CONTRACTORS LIMITED,08468861,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Spectrumx Holdings UK Ltd,spectrumx holdings united kingdom,SPECTRUMX HOLDINGS UK LTD,13745475,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Triton Construction Ltd,triton construction,TRITON CONSTRUCTION LIMITED,05352888,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Yantra Fulfilment Ltd,yantra fulfilment,YANTRA FULFILMENT LIMITED,11856773,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Geosight Enviromental Ltd,geosight enviromental,,,0.0,False,
+UTEC Survey Inc,utec survey,UTEC SURVEY LIMITED,SC293981,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+View Associates,view associates,,,0.0,False,
+XACT CODING & MARKING,xact coding marking,,,0.0,False,
+AEROCO LTD,aeroco,AEROCO LIMITED,07030199,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Forrest Fresh Foods Ltd,forrest fresh foods,FORREST FRESH FOODS LIMITED,07122479,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+North East Tippers Ltd,north east tippers,NORTH EAST TIPPERS LIMITED,08897724,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+United Welding Supplies Ltd,united welding supplies,UNITED WELDING SUPPLIES LIMITED,02390879,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+(D) Suez Recycling - Williton,d suez recycling - williton,,,0.0,False,
+(D) Wolseley UK Ltd (Swindon),d wolseley united kingdom swindon,,,0.0,False,
+(D) Warburtons (Bicester),d warburtons bicester,,,0.0,False,
+(D) Warburtons (Darlington),d warburtons darlington,,,0.0,False,
+Apetito Limited,apetito,APETITO LIMITED,00233851,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Trusstec Limited,trusstec,TRUSSTEC LIMITED,02266722,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Penny Morrison Ltd,penny morrison,PENNY MORRISON LTD,11572012,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+(D) BCA Group (Bristol),d bca group bristol,,,0.0,False,
+(D) Ceva Logistics Ltd (Bicester),d ceva logistics bicester,,,0.0,False,
+E & D Grow LTD,e d grow,E&D GROW LTD,15300910,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Yerko Supplies Ltd,yerko supplies,,,0.0,False,
+Westminster Academy,westminster academy,WESTMINSTER ACADEMY TRUST,10571263,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Alderwood Primary School,alderwood primary school,,,0.0,False,
+Rainford High School,rainford high school,,,0.0,False,
+Junior Adventure Groups - Hayley,junior adventure groups - hayley,,,0.0,False,
+Leytonstone School,leytonstone school,,,0.0,False,
+Brookfield Primary School,brookfield primary school,,,0.0,False,
+St Joseph's College,st joseph s college,ST JOSEPH'S COLLEGE LIMITED,03142500,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Fairley House School,fairley house school,FAIRLEY HOUSE SCHOOL,01535096,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+George Mitchell School,george mitchell school,,,0.0,False,
+Chesterfield High School,chesterfield high school,CHESTERFIELD HIGH SCHOOL,07761675,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+King's Leadership Academy Bolton,king s leadership academy bolton,,,0.0,False,
+Oakleigh School and Early Years Centre (SEND),oakleigh school and early years centre send,,,0.0,False,
+Hassell Community Primary,hassell community primary,,,0.0,False,
+Mount St Joseph,mount st joseph,,,0.0,False,
+St Thomas More Catholic Academy,st thomas more catholic academy,,,0.0,False,
+Birches Head Academy,birches head academy,,,0.0,False,
+The Discovery Academy,the discovery academy,,,0.0,False,
+St Peters Academy - Fenton/Stoke-on-Trent,st peters academy - fenton stoke-on-trent,,,0.0,False,
+QEWC,qewc,,,0.0,False,
+Tollgate Primary School,tollgate primary school,,,0.0,False,
+Drumbeat School and ASD Unit,drumbeat school and asd unit,,,0.0,False,
+Panel Supplies Limited,panel supplies,PANEL SUPPLIES LIMITED,06277416,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+R & J Logistics Limited,r j logistics,R&J LOGISTICS LTD,10712678,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Furniture Delivery Solutions,furniture delivery,FURNITURE DELIVERY CO LTD,07474597,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+MJK Resourcing Limited,mjk resourcing,MJK RESOURCING LTD,09828122,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Mark Everton Light Transport,mark everton light transport,,,0.0,False,
+Eazy Freight Limited,eazy freight,EAZY FREIGHT LTD,SC621457,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Eshelby Group International,eshelby,ESHELBYS LTD,14897862,0.97,True,"{'exact_match': 0.0, 'core_match': 0.0, 'token_overlap': 0.0, 'fuzzy_ratio': 0.93, 'partial_ratio': 1.0, 'token_sort_ratio': 0.93, 'token_set_ratio': 0.93, 'embedding_similarity': 0.0}"
+W S Surplus Supplies Ltd,w s surplus supplies,W. S. SURPLUS SUPPLIES LIMITED,00694297,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Freightx/ Wellnex Ltd,freightx wellnex,,,0.0,False,
+UK & IE Flora Group Ltd,united kingdom ie flora group,UK & IE FLORA GROUP LIMITED,03380152,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Star Transport & Warehousing,star transport warehousing,STAR TRANSPORT AND WAREHOUSING LIMITED,01620450,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.93, 'partial_ratio': 0.85, 'token_sort_ratio': 0.93, 'token_set_ratio': 1.0, 'embedding_similarity': 0.9140745048217579}"
+SSO LOGISTICS LIMITED,sso logistics,SSO LOGISTICS LIMITED,09030923,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Topgrade Logistics Limited,topgrade logistics,TOPGRADE LOGISTICS LIMITED,08882778,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Barnes Logistics Cheshire Ltd,barnes logistics cheshire,BARNES LOGISTICS (CHESHIRE) LIMITED,03004203,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+MB Retail Distribution Ltd,mb retail distribution,MB RETAIL DISTRIBUTION LTD,14230721,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Madex Logistics Ltd,madex logistics,MADEX LOGISTICS LTD,04571414,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+A2B Freight Ltd,a2b freight,A2B FREIGHT LTD,13006796,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Contento Racking & Shelving,contento racking shelving,,,0.0,False,
+Quality Freight Services Ltd,quality freight services,QUALITY FREIGHT SERVICES LIMITED,03090860,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+R J Bower Ltd,r j bower,R J BOWER LIMITED,02604154,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Express Car Rental,express car rental,EXPRESS CAR RENTAL LTD,13759673,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Bowers Electricals Ltd,bowers electricals,BOWERS ELECTRICALS LIMITED,01955004,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Rolls Royce SMR,rolls royce smr,,,0.0,False,
+Geociencias y Exploraciones Marítimas S.L.U.,geociencias y exploraciones marítimas s l u,,,0.0,False,
+Orbion Space Technology,orbion space,,,0.0,False,
+EnduroSat AD,endurosat ad,,,0.0,False,
+Midwest Mechanical and Electrical Services,midwest mechanical and electrical,,,0.0,False,
+WAITE-SAVERS,waite-savers,,,0.0,False,
+GAZOLINE LTD,gazoline,GAZOLINE LTD,12996676,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+VARG CUSTOMS,varg customs,VARG CUSTOMS LIMITED,15442978,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+TNS CONNECTIONS,tns connections,,,0.0,False,
+ACCUKEY AUTO & DOMESTIC LOCKSMITH,accukey auto domestic locksmith,,,0.0,False,
+ANTHONY HOGAN,anthony hogan,,,0.0,False,
+UNIQUE PRODUCTS UK,unique products united kingdom,,,0.0,False,
+DRIVESHIELD INSTALLATIONS LIMITED,driveshield installations,DRIVESHIELD INSTALLATIONS LIMITED,05768980,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+PROJECT INSTALLATIONS LTD,project installations,,,0.0,False,
+WELBECK SERVICE STATION,welbeck service station,WELBECK SERVICE STATION LTD,09237998,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+LIGHTNETIC CUSTOMS,lightnetic customs,LIGHTNETIC CUSTOMS LTD,13182344,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+M J CHURCH PLANT LTD,m j church plant,M J CHURCH (PLANT) LIMITED,01856955,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+DYNAMIC SOUNDS,dynamic sounds,DYNAMIC SOUNDS LIMITED,03972638,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+AMA EXECUTIVE LIMITED,ama executive,AMA EXECUTIVE LIMITED,12129844,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Knorr-Bremse Rail Sysytems ( Uk ),knorr-bremse rail sysytems united kingdom,,,0.0,False,
+Knorr-Bremse,knorr-bremse,,,0.0,False,
+Harrison Goldman,harrison goldman,,,0.0,False,
+RMB 102 Limited,rmb 102,RMB 102 LIMITED,07511484,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+STROUD DISTRICT COUNCIL,stroud district council,,,0.0,False,
+NEW FOREST DISTRICT COUNCIL,new forest district council,,,0.0,False,
+SANCTUARY GROUP (SANCTPAI),sanctuary group sanctpai,,,0.0,False,
+MELIN HOMES,melin homes,MELIN HOMES LIMITED,IP27421R,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Porchlight,porchlight,PORCHLIGHT,01157482,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Tiny Tots Nursery,tiny tots nursery,TINY TOTS NURSERY LIMITED,SC219870,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Nursery in a Yurt,nursery in a yurt,NURSERY IN A YURT LIMITED,13382718,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Locking Preschool,locking preschool,,,0.0,False,
+Pulse Plastics Limited,pulse plastics,PULSE PLASTICS LIMITED,04529261,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Atomic Weapons Establishment,atomic weapons establishment,,,0.0,False,
+DEFRA - PSR,defra - psr,,,0.0,False,
+Digital Outcomes and Specialists (DOS),digital outcomes and specialists dos,,,0.0,False,
+DSTL (Salisbury),dstl salisbury,,,0.0,False,
+Foreign and Commonwealth Office (London),foreign mmonwealth office london,,,0.0,False,
+PSR - Home Office,psr - home office,,,0.0,False,
+PSR - Gov Contracts,psr - gov contracts,,,0.0,False,
+PSR - MOD,psr - mod,,,0.0,False,
+PSR,psr,,,0.0,False,
+Biffa - High Wycombe,biffa - high wycombe,,,0.0,False,
+H and J Limited (Rainbow Restoration),h and j rainbow restoration,,,0.0,False,
+Pioneer Pump,pioneer pump,PIONEER PUMP LIMITED,04327332,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Heat Recruitment Limited,heat recruitment,HEAT RECRUITMENT LIMITED,15269679,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Choiceall Limited,choiceall,CHOICEALL LIMITED,02974368,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+RO London Limited,ro london,RO LONDON LIMITED,15101230,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Ardor Projects Limited,ardor projects,ARDOR PROJECTS LTD,14657479,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Isle of Wight Council,isle of wight council,,,0.0,False,
+Rochdale Borough Council,rochdale borough council,,,0.0,False,
+Norfolk - Hillcrest school,norfolk - hillcrest school,,,0.0,False,
+Surrey - NW Child Protection and Proceedings Team,surrey - nw child protection and proceedings team,,,0.0,False,
+Essex - Shenfield High School,essex - shenfield high school,,,0.0,False,
+UCL Academy,ucl academy,THE UCL ACADEMY,07024902,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.85, 'partial_ratio': 1.0, 'token_sort_ratio': 0.85, 'token_set_ratio': 1.0, 'embedding_similarity': 0.7812143792445814}"
+Cambridgeshire - The Centre School,cambridgeshire - the centre school,,,0.0,False,
+ESC Global Ltd,esc global,ESC GLOBAL LIMITED,06989600,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+JLJ Effluent Engineering Ltd,jlj effluent engineering,,,0.0,False,
+CTECH Europe Ltd,ctech europe,CTECH EUROPE LTD,03238094,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Williams (Metro),williams metro,,,0.0,False,
+East West Ales Limited - Calverts Court 1617,east west ales - calverts court 1617,,,0.0,False,
+East West Ales Limited - Green Dragon 7029,east west ales - green dragon 7029,,,0.0,False,
+Beer Trading Limited,beer trading,BEER TRADING LIMITED,06214374,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Miners Arms (1302505),miners arms 1302505,,,0.0,False,
+East West Ales Limited - The Wye Bridge House 1681,east west ales - the wye bridge house 1681,,,0.0,False,
+East West Ales Limited - Kingfisher 6862,east west ales - kingfisher 6862,,,0.0,False,
+Mayflower,mayflower,,,0.0,False,
+Best of British Beer (1297978),best of british beer 1297978,,,0.0,False,
+George & Dragon (SK7),george dragon sk7,,,0.0,False,
+"East West Ales Limited - The Wilfred Wood, Stockport 6345",east west ales - the wilfred wood stockport 6345,,,0.0,False,
+East West Ales Limited - The Bradley Green 1898,east west ales - the bradley green 1898,,,0.0,False,
+A.S.D Wholesale Ltd,a s d wholesale,A. S. D. WHOLESALE LIMITED,03120735,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Staffordshire Brewery Ltd (1130795),staffordshire brewery 1130795,,,0.0,False,
+SCOTT GREEN,scott green,,,0.0,False,
+THE INNOVATIVE BREWING COMPANY LTD,the innovative brewing,THE INNOVATIVE BREWING COMPANY LTD,12356101,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+PARASOL WINES LTD,parasol wines,PARASOL WINES LTD,11284691,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+FIRST LIGHT CAFE LTD,first light cafe,FIRST LIGHT CAFE LTD,15281518,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Austin Elliot Consultancy,austin elliot consultancy,AUSTIN ELLIOT CONSULTANCY LTD,11784166,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+KTSL Limited,ktsl,KTSL LIMITED,03926836,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Andrew Pestell,andrew pestell,,,0.0,False,
+Azeez Animashaun,azeez animashaun,,,0.0,False,
+Bowel Cancer UK,bowel cancer united kingdom,BOWEL CANCER UK,03409832,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Bradley McPherson,bradley mcpherson,,,0.0,False,
+Daniel McKerchar,daniel mckerchar,,,0.0,False,
+David Butt,david butt,,,0.0,False,
+David Martin,david martin,DAVID MARTIN LIMITED,SC692459,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Easebourne CE Primary School,easebourne ce primary school,,,0.0,False,
+Hampton Primary School,hampton primary school,,,0.0,False,
+Joanne Scott,joanne scott,,,0.0,False,
+Lee Hollis,lee hollis,,,0.0,False,
+Oragyms Ltd,oragyms,ORAGYMS LTD,10600648,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 0.0}"
+Plymouth Argyle Football Co Ltd,plymouth argyle football,PLYMOUTH ARGYLE FOOTBALL CLUB LIMITED,07796376,0.97,True,"{'exact_match': 0.0, 'core_match': 0.0, 'token_overlap': 0.75, 'fuzzy_ratio': 0.91, 'partial_ratio': 1.0, 'token_sort_ratio': 0.91, 'token_set_ratio': 1.0, 'embedding_similarity': 0.8817215171802375}"
+South Kent Community Church,south kent community church,SOUTH KENT COMMUNITY CHURCH,03269700,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+St. James's Place Wealth Management,st james s place wealth,ST. JAMES'S PLACE WEALTH MANAGEMENT PLC,04113955,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 0.8333333333333334, 'fuzzy_ratio': 0.81, 'partial_ratio': 1.0, 'token_sort_ratio': 0.81, 'token_set_ratio': 1.0, 'embedding_similarity': 0.9737743006720657}"
+Vision Computer Centre Ltd,vision computer centre,VISION COMPUTER CENTRE LIMITED,04630049,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Rise Construction (EA) Ltd,rise construction ea,RISE CONSTRUCTION (EA) LTD,12763005,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Flux Consultancy Recruitment Ltd,flux consultancy recruitment,,,0.0,False,
+Anglia Suspended Ceilings Limited,anglia suspended ceilings,ANGLIA SUSPENDED CEILINGS LIMITED,07276237,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+T.H. Moss and Sons Limited,t h moss and sons,,,0.0,False,
+SSG Contracts Ltd,ssg contracts,SSG CONTRACTS LIMITED,02649133,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Gavin Griffiths Recycling Ltd,gavin griffiths recycling,GAVIN GRIFFITHS RECYCLING LTD,05640715,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Meralm Bidco AB,meralm bidco ab,,,0.0,False,
+6270,6270,,,0.0,False,
+6182,6182,,,0.0,False,
+6052,6052,,,0.0,False,
+6267,6267,,,0.0,False,
+6276,6276,,,0.0,False,
+6280,6280,,,0.0,False,
+6281,6281,,,0.0,False,
+6272,6272,,,0.0,False,
+6273,6273,,,0.0,False,
+6274,6274,,,0.0,False,
+6275,6275,,,0.0,False,
+6277,6277,,,0.0,False,
+6279,6279,,,0.0,False,
+6269,6269,,,0.0,False,
+6264,6264,,,0.0,False,
+6146,6146,,,0.0,False,
+6147,6147,,,0.0,False,
+6143,6143,,,0.0,False,
+6145,6145,,,0.0,False,
+6148,6148,,,0.0,False,
+6222,6222,,,0.0,False,
+5517,5517,,,0.0,False,
+6155,6155,,,0.0,False,
+6277,6277,,,0.0,False,
+Working on Wellbeing t/a Optima Health.,working on wellbeing t a optima health,,,0.0,False,
+Merseyside Police.,merseyside police,,,0.0,False,
+Allied Vehicles Limited,allied vehicles,ALLIED VEHICLES LIMITED,SC147093,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+Saint Augustines Primary,saint augustines primary,,,0.0,False,
+CHERRYTECH UK LTD,cherrytech united kingdom,,,0.0,False,
+CONTRACT FURNITURE GROUP LTD,contract furniture group,CONTRACT FURNITURE GROUP LIMITED,06990972,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+DRENCH EUROPE LTD,drench europe,DRENCH EUROPE LIMITED,10192893,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+DOVER HAMILTON LIMITED,dover hamilton,DOVER HAMILTON LIMITED,12607590,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+VINCI HOME TRADING UK LTD,vinci home trading united kingdom,VINCI HOME TRADING UK LIMITED,11744736,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+KP LOGISTIEK,kp logistiek,,,0.0,False,
+MY MERCHANT LIMITED,my merchant,,,0.0,False,
+BENCHMARK,benchmark,,,0.0,False,
+"SHANGHAI SOUTH-LOGISTICS CO., LTD",shanghai south-logistics,,,0.0,False,
+PREMIER SERVICES AND PRODUCTS LTD,premier services and products,PREMIER PRODUCTS & SERVICES LIMITED,05987299,0.98,True,"{'exact_match': 0.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 0.59, 'partial_ratio': 0.64, 'token_sort_ratio': 0.93, 'token_set_ratio': 1.0, 'embedding_similarity': 0.9392838161828806}"
+RAWLINGS & SON (BRISTOL) LTD,rawlings son bristol,RAWLINGS & SON(BRISTOL)LIMITED,00330872,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+EXCELSIOR EUROPE LTD,excelsior europe,EXCELSIOR EUROPE LTD,06372258,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+MULTI TRANS AG,multi trans,,,0.0,False,
+DESIGNERS GUILD LTD,designers guild,DESIGNERS GUILD (CORPORATION) LIMITED,03147628,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+TRINITY TOOLING & MACHINERY,trinity tooling machinery,TRINITY TOOLING & MACHINERY LTD,11191130,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+ZERO EMISSION VEHICLES LTD,zero emission vehicles,ZERO EMISSION VEHICLES LIMITED,04842525,1.0,True,"{'exact_match': 1.0, 'core_match': 1.0, 'token_overlap': 1.0, 'fuzzy_ratio': 1.0, 'partial_ratio': 1.0, 'token_sort_ratio': 1.0, 'token_set_ratio': 1.0, 'embedding_similarity': 1.0}"
+TALABOUZEROUF NOHLAN,talabouzerouf nohlan,,,0.0,False,
